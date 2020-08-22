@@ -3,7 +3,6 @@ package cn.xpbootcamp.gildedrose;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +35,17 @@ public class GeneralProductTest {
         gildedRose.afterDays(passedDays);
 
         assertEquals(expectedQuality, gildedRose.getGeneralProducts().get(0).getQuality());
+    }
+
+    @Test
+    void should_return_correct_quality_when_product_from_not_expired_to_expired_given_gilded_rose_with_general_product() {
+        List<GeneralProduct> generalProducts = new ArrayList<>();
+        GeneralProduct generalProduct = new GeneralProduct(5, 10);
+        generalProducts.add(generalProduct);
+        GildedRose gildedRose = new GildedRose(generalProducts);
+
+        gildedRose.afterDays(7);
+
+        assertEquals(1, gildedRose.getGeneralProducts().get(0).getQuality());
     }
 }
