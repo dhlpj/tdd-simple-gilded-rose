@@ -12,14 +12,22 @@ public class GildedRose {
     public void afterDays(int days) {
         for (GeneralProduct generalProduct : generalProducts) {
             for (; days > 0; days = days - 1) {
-                if (generalProduct.getSellIn() <= 0) {
-                    generalProduct.setQuality(generalProduct.getQuality() - 2);
-                } else {
-                    generalProduct.setQuality(generalProduct.getQuality() - 1);
+                if (generalProduct.getQuality() == 0) {
+                    generalProduct.setSellIn(generalProduct.getSellIn() - 1);
+                    continue;
                 }
-                generalProduct.setSellIn(generalProduct.getSellIn() - 1);
+                updateQualityAndSellIn(generalProduct);
             }
         }
+    }
+
+    private void updateQualityAndSellIn(GeneralProduct generalProduct) {
+        if (generalProduct.getSellIn() <= 0) {
+            generalProduct.setQuality(generalProduct.getQuality() - 2);
+        } else {
+            generalProduct.setQuality(generalProduct.getQuality() - 1);
+        }
+        generalProduct.setSellIn(generalProduct.getSellIn() - 1);
     }
 
     public List<GeneralProduct> getGeneralProducts() {

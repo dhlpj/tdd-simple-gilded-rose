@@ -48,4 +48,16 @@ public class GeneralProductTest {
 
         assertEquals(1, gildedRose.getGeneralProducts().get(0).getQuality());
     }
+
+    @Test
+    void should_return_0_quality_when_product_pass_12_days_given_gilded_rose_include_general_product_with_10_quality_and_15_sellIn() {
+        List<GeneralProduct> generalProducts = new ArrayList<>();
+        GeneralProduct generalProduct = new GeneralProduct(15, 10);
+        generalProducts.add(generalProduct);
+        GildedRose gildedRose = new GildedRose(generalProducts);
+
+        gildedRose.afterDays(12);
+
+        assertEquals(0, gildedRose.getGeneralProducts().get(0).getQuality());
+    }
 }
