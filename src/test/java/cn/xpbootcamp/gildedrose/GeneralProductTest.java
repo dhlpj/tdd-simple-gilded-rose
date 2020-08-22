@@ -60,4 +60,16 @@ public class GeneralProductTest {
 
         assertEquals(0, gildedRose.getGeneralProducts().get(0).getQuality());
     }
+
+    @Test
+    void should_return_0_quality_when_product_pass_6_days_given_gilded_rose_include_expired_general_product_with_10_quality() {
+        List<GeneralProduct> generalProducts = new ArrayList<>();
+        GeneralProduct generalProduct = new GeneralProduct(0, 10);
+        generalProducts.add(generalProduct);
+        GildedRose gildedRose = new GildedRose(generalProducts);
+
+        gildedRose.afterDays(6);
+
+        assertEquals(0, gildedRose.getGeneralProducts().get(0).getQuality());
+    }
 }
