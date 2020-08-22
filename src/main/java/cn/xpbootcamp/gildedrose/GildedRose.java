@@ -11,7 +11,12 @@ public class GildedRose {
 
     public void afterDays(int days) {
         for (GeneralProduct generalProduct : generalProducts) {
-            generalProduct.setQuality(generalProduct.getQuality() - days);
+            if (generalProduct.getSellIn() <= 0) {
+                generalProduct.setQuality(generalProduct.getQuality() - 2 * days);
+            } else {
+                generalProduct.setQuality(generalProduct.getQuality() - days);
+            }
+            generalProduct.setSellIn(generalProduct.getSellIn() - days);
         }
     }
 

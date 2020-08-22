@@ -16,4 +16,12 @@ public class GeneralProduct {
     public void setQuality(int quality) {
         this.quality = quality;
     }
+
+    public int getSellIn() {
+        return sellIn;
+    }
+
+    public void setSellIn(int sellIn) {
+        this.sellIn = sellIn;
+    }
 }

@@ -24,4 +24,17 @@ public class GeneralProductTest {
         assertEquals(expectedQuality, gildedRose.getGeneralProducts().get(0).getQuality());
 
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,8","2,6","3,4","4,2"})
+    void should_return_correct_quality_when_pass_several_days_given_gilded_rose_with_expired_general_product(int passedDays, int expectedQuality) {
+        List<GeneralProduct> generalProducts = new ArrayList<>();
+        GeneralProduct generalProduct = new GeneralProduct(0, 10);
+        generalProducts.add(generalProduct);
+        GildedRose gildedRose = new GildedRose(generalProducts);
+
+        gildedRose.afterDays(passedDays);
+
+        assertEquals(expectedQuality, gildedRose.getGeneralProducts().get(0).getQuality());
+    }
 }
