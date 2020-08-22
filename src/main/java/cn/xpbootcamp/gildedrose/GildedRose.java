@@ -3,6 +3,9 @@ package cn.xpbootcamp.gildedrose;
 import java.util.List;
 
 public class GildedRose {
+    public static final int MIN_PRODUCT_QUALITY = 0;
+    public static final int NON_EXPIRED_PRODUCT_QUALITY_REDUCTION = 1;
+    public static final int EXPIRED_PRODUCT_QUALITY_REDUCTION = 2;
     private List<GeneralProduct> generalProducts;
 
     public GildedRose(List<GeneralProduct> generalProducts) {
@@ -12,22 +15,38 @@ public class GildedRose {
     public void afterDays(int days) {
         for (GeneralProduct generalProduct : generalProducts) {
             for (; days > 0; days = days - 1) {
-                if (generalProduct.getQuality() == 0) {
-                    generalProduct.setSellIn(generalProduct.getSellIn() - 1);
+                if (generalProduct.getQuality() == MIN_PRODUCT_QUALITY) {
+                    updateProductSellIn(generalProduct);
                     continue;
                 }
-                updateQualityAndSellIn(generalProduct);
+                updateProductQualityAndSellIn(generalProduct);
             }
         }
     }
 
-    private void updateQualityAndSellIn(GeneralProduct generalProduct) {
+    private void updateProductQualityAndSellIn(GeneralProduct generalProduct) {
+        updateProductQuality(generalProduct);
+        updateProductSellIn(generalProduct);
+    }
+
+    private void updateProductQuality(GeneralProduct generalProduct) {
         if (generalProduct.getSellIn() <= 0) {
-            generalProduct.setQuality(generalProduct.getQuality() - 2);
+            updateExpiredProductQuality(generalProduct);
         } else {
-            generalProduct.setQuality(generalProduct.getQuality() - 1);
+            generalProduct.setQuality(generalProduct.getQuality() - NON_EXPIRED_PRODUCT_QUALITY_REDUCTION);
         }
+    }
+
+    private void updateProductSellIn(GeneralProduct generalProduct) {
         generalProduct.setSellIn(generalProduct.getSellIn() - 1);
+    }
+
+    private void updateExpiredProductQuality(GeneralProduct generalProduct) {
+        if (generalProduct.getQuality() > EXPIRED_PRODUCT_QUALITY_REDUCTION) {
+            generalProduct.setQuality(generalProduct.getQuality() - EXPIRED_PRODUCT_QUALITY_REDUCTION);
+        } else {
+            generalProduct.setQuality(MIN_PRODUCT_QUALITY);
+        }
     }
 
     public List<GeneralProduct> getGeneralProducts() {
