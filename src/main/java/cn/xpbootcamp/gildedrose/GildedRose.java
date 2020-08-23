@@ -7,9 +7,11 @@ public class GildedRose {
     public static final int NON_EXPIRED_PRODUCT_QUALITY_REDUCTION = 1;
     public static final int EXPIRED_PRODUCT_QUALITY_REDUCTION = 2;
     private List<GeneralProduct> generalProducts;
+    private List<BackstagePass> backstagePasses;
 
-    public GildedRose(List<GeneralProduct> generalProducts) {
+    public GildedRose(List<GeneralProduct> generalProducts, List<BackstagePass> backstagePasses) {
         this.generalProducts = generalProducts;
+        this.backstagePasses = backstagePasses;
     }
 
     public void afterDays(int days) {
@@ -21,6 +23,10 @@ public class GildedRose {
                 }
                 updateProductQualityAndSellIn(generalProduct);
             }
+        }
+        for (BackstagePass backstagePass : backstagePasses) {
+            backstagePass.setQuality(backstagePass.getQuality() + days);
+            backstagePass.setSellIn(backstagePass.getSellIn() - days);
         }
     }
 
@@ -51,5 +57,9 @@ public class GildedRose {
 
     public List<GeneralProduct> getGeneralProducts() {
         return generalProducts;
+    }
+
+    public List<BackstagePass> getBackstagePasses() {
+        return backstagePasses;
     }
 }

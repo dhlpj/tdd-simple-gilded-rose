@@ -16,7 +16,7 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(10, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts);
+        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
 
         gildedRose.afterDays(passedDays);
 
@@ -30,7 +30,7 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(0, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts);
+        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
 
         gildedRose.afterDays(passedDays);
 
@@ -42,7 +42,7 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(5, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts);
+        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
 
         gildedRose.afterDays(7);
 
@@ -54,7 +54,7 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(15, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts);
+        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
 
         gildedRose.afterDays(12);
 
@@ -66,7 +66,7 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(0, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts);
+        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
 
         gildedRose.afterDays(6);
 
@@ -78,7 +78,7 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(5, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts);
+        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
 
         gildedRose.afterDays(8);
 
