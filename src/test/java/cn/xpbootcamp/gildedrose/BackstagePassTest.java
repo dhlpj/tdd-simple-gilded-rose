@@ -1,5 +1,6 @@
 package cn.xpbootcamp.gildedrose;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -55,5 +56,16 @@ public class BackstagePassTest {
         gildedRose.afterDays(passedDays);
 
         assertEquals(expectedQuality, gildedRose.getBackstagePasses().get(0).getQuality());
+    }
+
+    @Test
+    void should_quality_equal_to_16_when_pass_4_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_12_sell_in() {
+        List<BackstagePass> backstagePasses = new ArrayList<>();
+        backstagePasses.add(new BackstagePass(12, 10));
+        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+
+        gildedRose.afterDays(4);
+
+        assertEquals(16, gildedRose.getBackstagePasses().get(0).getQuality());
     }
 }
