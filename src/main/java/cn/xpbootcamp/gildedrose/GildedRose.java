@@ -12,8 +12,8 @@ public class GildedRose {
     }
 
     public void afterDays(int days) {
-        for (Product product : products) {
-            for (; days > 0; days = days - 1) {
+        for (; days > 0; days = days - 1) {
+            for (Product product : products) {
                 product.updateProductQualityAndSellIn();
             }
         }
