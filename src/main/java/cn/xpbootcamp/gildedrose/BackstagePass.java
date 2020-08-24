@@ -25,7 +25,7 @@ public class BackstagePass extends Product {
         } else if (this.sellIn > 5) {
             this.quality = Math.min(this.quality + SELL_IN_GREATER_THAN_FIVE_QUALITY_INCREMENT, GildedRose.MAX_PRODUCT_QUALITY);
         } else if (this.sellIn > 0) {
-            this.quality = this.quality + SELL_IN_GREATER_THAN_ZERO_QUALITY_INCREMENT;
+            this.quality = Math.min(this.quality + SELL_IN_GREATER_THAN_ZERO_QUALITY_INCREMENT, GildedRose.MAX_PRODUCT_QUALITY);
         } else {
             this.quality = 0;
         }

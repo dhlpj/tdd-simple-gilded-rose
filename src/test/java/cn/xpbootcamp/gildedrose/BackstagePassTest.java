@@ -112,4 +112,15 @@ public class BackstagePassTest {
 
         assertEquals(50, gildedRose.getBackstagePasses().get(0).getQuality());
     }
+
+    @Test
+    void should_max_quality_equal_to_50_when_pass_several_days_given_gilded_rose_include_backstage_pass_with_sell_in_between_0_and_5() {
+        List<BackstagePass> backstagePasses = new ArrayList<>();
+        backstagePasses.add(new BackstagePass(5, 45));
+        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+
+        gildedRose.afterDays(4);
+
+        assertEquals(50, gildedRose.getBackstagePasses().get(0).getQuality());
+    }
 }
