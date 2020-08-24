@@ -59,7 +59,7 @@ public class BackstagePassTest {
     }
 
     @Test
-    void should_quality_equal_to_16_when_pass_4_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_12_sell_in() {
+    void should_quality_equal_to_16_when_its_sell_in_from_greater_than_10_to_lower_than_10_but_greater_than_5_and_pass_4_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_12_sell_in() {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(12, 10));
         GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
@@ -67,5 +67,16 @@ public class BackstagePassTest {
         gildedRose.afterDays(4);
 
         assertEquals(16, gildedRose.getBackstagePasses().get(0).getQuality());
+    }
+
+    @Test
+    void should_quality_equal_to_22_when_its_sell_in_from_greater_than_5_to_lower_than_5_but_greater_than_0_and_pass_5_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_8_sell_in() {
+        List<BackstagePass> backstagePasses = new ArrayList<>();
+        backstagePasses.add(new BackstagePass(8, 10));
+        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+
+        gildedRose.afterDays(5);
+
+        assertEquals(22, gildedRose.getBackstagePasses().get(0).getQuality());
     }
 }
