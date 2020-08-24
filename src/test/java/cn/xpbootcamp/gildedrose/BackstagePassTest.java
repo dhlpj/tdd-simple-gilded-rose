@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BackstagePassTest {
     @ParameterizedTest
-    @CsvSource({"1,11","2,12","3,13","4,14"})
+    @CsvSource({"1,11", "2,12", "3,13", "4,14"})
     void should_add_the_same_as_amount_of_days_to_quality_when_pass_several_days_but_sell_in_greater_than_10_given_gilded_rose_include_backstage_pass_with_10_quality_and_20_sell_in(int passedDays, int expectedQuality) {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(20, 10));
@@ -22,7 +22,7 @@ public class BackstagePassTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1,12","2,14","3,16","4,18"})
+    @CsvSource({"1,12", "2,14", "3,16", "4,18"})
     void should_add_double_amount_of_days_to_quality_when_pass_several_days_but_sell_in_greater_than_10_and_less_equal_than_5_given_gilded_rose_include_backstage_pass_with_10_quality_and_10_sell_in(int passedDays, int expectedQuality) {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(10, 10));
@@ -34,10 +34,22 @@ public class BackstagePassTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1,13","2,16","3,19","4,22","5,25"})
+    @CsvSource({"1,13", "2,16", "3,19", "4,22", "5,25"})
     void should_add_treble_amount_of_days_to_quality_when_pass_several_days_but_sell_in_greater_than_0_and_less_equal_than_5_given_gilded_rose_include_backstage_pass_with_10_quality_and_5_sell_in(int passedDays, int expectedQuality) {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(5, 10));
+        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+
+        gildedRose.afterDays(passedDays);
+
+        assertEquals(expectedQuality, gildedRose.getBackstagePasses().get(0).getQuality());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1,0", "2,0", "3,0"})
+    void should_quality_be_0_when_backstage_pass_through_several_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_0_sell_in(int passedDays, int expectedQuality) {
+        List<BackstagePass> backstagePasses = new ArrayList<>();
+        backstagePasses.add(new BackstagePass(0, 10));
         GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
 
         gildedRose.afterDays(passedDays);

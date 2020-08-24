@@ -28,8 +28,10 @@ public class GildedRose {
                     backstagePass.setQuality(backstagePass.getQuality() + 1);
                 } else if (backstagePass.getSellIn() > 5) {
                     backstagePass.setQuality(backstagePass.getQuality() + 2);
-                } else {
+                } else if (backstagePass.getSellIn() > 0){
                     backstagePass.setQuality(backstagePass.getQuality() + 3);
+                } else {
+                    backstagePass.setQuality(0);
                 }
                 backstagePass.setSellIn(backstagePass.getSellIn() - 1);
             }
