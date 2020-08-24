@@ -14,10 +14,11 @@ public class GeneralProduct extends Product{
         if (this.quality > GildedRose.MIN_PRODUCT_QUALITY) {
             updateProductQuality();
         }
-        this.sellIn = this.sellIn - 1;
+        updateProductSellIn();
     }
 
-    private void updateProductQuality() {
+    @Override
+    protected void updateProductQuality() {
         if (this.sellIn <= 0) {
             updateExpiredProductQuality();
         } else {
@@ -31,9 +32,5 @@ public class GeneralProduct extends Product{
 
     private void updateNonExpiredProductQuality() {
         this.quality = this.quality - GeneralProduct.NON_EXPIRED_PRODUCT_QUALITY_REDUCTION;
-    }
-
-    public int getQuality() {
-        return quality;
     }
 }

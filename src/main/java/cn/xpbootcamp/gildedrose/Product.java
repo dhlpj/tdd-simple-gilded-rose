@@ -5,4 +5,14 @@ public abstract class Product {
     protected int quality;
 
     abstract public void updateProductQualityAndSellIn();
+
+    abstract protected void updateProductQuality();
+
+    protected void updateProductSellIn() {
+        this.sellIn = this.sellIn -1;
+    }
+
+    public int getQuality() {
+        return quality;
+    }
 }

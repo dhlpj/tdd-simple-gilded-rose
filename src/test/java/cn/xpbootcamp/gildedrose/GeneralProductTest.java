@@ -16,11 +16,11 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(10, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
+        GildedRose gildedRose = new GildedRose(generalProducts);
 
         gildedRose.afterDays(passedDays);
 
-        assertEquals(expectedQuality, gildedRose.getGeneralProducts().get(0).getQuality());
+        assertEquals(expectedQuality, gildedRose.getProducts().get(0).getQuality());
 
     }
 
@@ -30,11 +30,11 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(0, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
+        GildedRose gildedRose = new GildedRose(generalProducts);
 
         gildedRose.afterDays(passedDays);
 
-        assertEquals(expectedQuality, gildedRose.getGeneralProducts().get(0).getQuality());
+        assertEquals(expectedQuality, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
@@ -42,11 +42,11 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(5, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
+        GildedRose gildedRose = new GildedRose(generalProducts);
 
         gildedRose.afterDays(7);
 
-        assertEquals(1, gildedRose.getGeneralProducts().get(0).getQuality());
+        assertEquals(1, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
@@ -54,11 +54,11 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(15, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
+        GildedRose gildedRose = new GildedRose(generalProducts);
 
         gildedRose.afterDays(12);
 
-        assertEquals(0, gildedRose.getGeneralProducts().get(0).getQuality());
+        assertEquals(0, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
@@ -66,11 +66,11 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(0, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
+        GildedRose gildedRose = new GildedRose(generalProducts);
 
         gildedRose.afterDays(6);
 
-        assertEquals(0, gildedRose.getGeneralProducts().get(0).getQuality());
+        assertEquals(0, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
@@ -78,10 +78,10 @@ public class GeneralProductTest {
         List<GeneralProduct> generalProducts = new ArrayList<>();
         GeneralProduct generalProduct = new GeneralProduct(5, 10);
         generalProducts.add(generalProduct);
-        GildedRose gildedRose = new GildedRose(generalProducts, new ArrayList<>());
+        GildedRose gildedRose = new GildedRose(generalProducts);
 
         gildedRose.afterDays(8);
 
-        assertEquals(0, gildedRose.getGeneralProducts().get(0).getQuality());
+        assertEquals(0, gildedRose.getProducts().get(0).getQuality());
     }
 }

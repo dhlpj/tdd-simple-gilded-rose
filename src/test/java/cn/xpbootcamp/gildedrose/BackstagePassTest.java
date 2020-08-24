@@ -15,11 +15,11 @@ public class BackstagePassTest {
     void should_add_the_same_as_amount_of_days_to_quality_when_pass_several_days_but_sell_in_greater_than_10_given_gilded_rose_include_backstage_pass_with_10_quality_and_20_sell_in(int passedDays, int expectedQuality) {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(20, 10));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(passedDays);
 
-        assertEquals(expectedQuality, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(expectedQuality, gildedRose.getProducts().get(0).getQuality());
     }
 
     @ParameterizedTest
@@ -27,11 +27,11 @@ public class BackstagePassTest {
     void should_add_double_amount_of_days_to_quality_when_pass_several_days_but_sell_in_greater_than_10_and_less_equal_than_5_given_gilded_rose_include_backstage_pass_with_10_quality_and_10_sell_in(int passedDays, int expectedQuality) {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(10, 10));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(passedDays);
 
-        assertEquals(expectedQuality, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(expectedQuality, gildedRose.getProducts().get(0).getQuality());
     }
 
     @ParameterizedTest
@@ -39,11 +39,11 @@ public class BackstagePassTest {
     void should_add_treble_amount_of_days_to_quality_when_pass_several_days_but_sell_in_greater_than_0_and_less_equal_than_5_given_gilded_rose_include_backstage_pass_with_10_quality_and_5_sell_in(int passedDays, int expectedQuality) {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(5, 10));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(passedDays);
 
-        assertEquals(expectedQuality, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(expectedQuality, gildedRose.getProducts().get(0).getQuality());
     }
 
     @ParameterizedTest
@@ -51,76 +51,76 @@ public class BackstagePassTest {
     void should_quality_be_0_when_backstage_pass_through_several_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_0_sell_in(int passedDays, int expectedQuality) {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(0, 10));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(passedDays);
 
-        assertEquals(expectedQuality, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(expectedQuality, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
     void should_quality_equal_to_16_when_its_sell_in_from_greater_than_10_to_lower_than_10_but_greater_than_5_and_pass_4_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_12_sell_in() {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(12, 10));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(4);
 
-        assertEquals(16, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(16, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
     void should_quality_equal_to_22_when_its_sell_in_from_greater_than_5_to_lower_than_5_but_greater_than_0_and_pass_5_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_8_sell_in() {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(8, 10));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(5);
 
-        assertEquals(22, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(22, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
     void should_quality_equal_to_0_when_its_sell_in_from_greater_than_0_but_lower_than_5_to_lower_than_0_and_pass_5_days_given_gilded_rose_include_backstage_pass_with_10_quality_and_8_sell_in() {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(3, 10));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(5);
 
-        assertEquals(0, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(0, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
     void should_max_quality_equal_to_50_when_pass_several_days_given_gilded_rose_include_backstage_pass_with_sell_in_greater_than_10() {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(16, 48));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(4);
 
-        assertEquals(50, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(50, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
     void should_max_quality_equal_to_50_when_pass_several_days_given_gilded_rose_include_backstage_pass_with_sell_in_between_5_and_10() {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(10, 45));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(4);
 
-        assertEquals(50, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(50, gildedRose.getProducts().get(0).getQuality());
     }
 
     @Test
     void should_max_quality_equal_to_50_when_pass_several_days_given_gilded_rose_include_backstage_pass_with_sell_in_between_0_and_5() {
         List<BackstagePass> backstagePasses = new ArrayList<>();
         backstagePasses.add(new BackstagePass(5, 45));
-        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+        GildedRose gildedRose = new GildedRose(backstagePasses);
 
         gildedRose.afterDays(4);
 
-        assertEquals(50, gildedRose.getBackstagePasses().get(0).getQuality());
+        assertEquals(50, gildedRose.getProducts().get(0).getQuality());
     }
 }
