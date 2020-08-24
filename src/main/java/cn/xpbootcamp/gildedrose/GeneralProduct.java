@@ -26,11 +26,7 @@ public class GeneralProduct extends Product{
     }
 
     private void updateExpiredProductQuality() {
-        if (this.quality > GeneralProduct.EXPIRED_PRODUCT_QUALITY_REDUCTION) {
-            this.quality = this.quality - GeneralProduct.EXPIRED_PRODUCT_QUALITY_REDUCTION;
-        } else {
-            this.quality = GildedRose.MIN_PRODUCT_QUALITY;
-        }
+        this.quality = Math.max(this.quality - GeneralProduct.EXPIRED_PRODUCT_QUALITY_REDUCTION, GildedRose.MIN_PRODUCT_QUALITY);
     }
 
     private void updateNonExpiredProductQuality() {
