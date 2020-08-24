@@ -25,8 +25,15 @@ public class GildedRose {
             }
         }
         for (BackstagePass backstagePass : backstagePasses) {
-            backstagePass.setQuality(backstagePass.getQuality() + days);
-            backstagePass.setSellIn(backstagePass.getSellIn() - days);
+            for (; days > 0; days = days - 1) {
+                if (backstagePass.getSellIn() <= 10) {
+                    backstagePass.setQuality(backstagePass.getQuality() + 2);
+                }
+                if (backstagePass.getSellIn() > 10) {
+                    backstagePass.setQuality(backstagePass.getQuality() + 1);
+                }
+                backstagePass.setSellIn(backstagePass.getSellIn() - 1);
+            }
         }
     }
 
