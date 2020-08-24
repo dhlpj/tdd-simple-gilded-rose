@@ -15,11 +15,10 @@ public class GildedRose {
     public void afterDays(int days) {
         for (GeneralProduct generalProduct : generalProducts) {
             for (; days > 0; days = days - 1) {
-                if (generalProduct.getQuality() == MIN_PRODUCT_QUALITY) {
-                    updateProductSellIn(generalProduct);
-                    continue;
+                if (generalProduct.getQuality() != MIN_PRODUCT_QUALITY) {
+                    updateGeneralProductQuality(generalProduct);
                 }
-                updateProductQualityAndSellIn(generalProduct);
+                generalProduct.setSellIn(generalProduct.getSellIn() - 1);
             }
         }
         for (BackstagePass backstagePass : backstagePasses) {
@@ -38,21 +37,12 @@ public class GildedRose {
         }
     }
 
-    private void updateProductQualityAndSellIn(GeneralProduct generalProduct) {
-        updateProductQuality(generalProduct);
-        updateProductSellIn(generalProduct);
-    }
-
-    private void updateProductQuality(GeneralProduct generalProduct) {
+    private void updateGeneralProductQuality(GeneralProduct generalProduct) {
         if (generalProduct.getSellIn() <= 0) {
             updateExpiredProductQuality(generalProduct);
         } else {
             generalProduct.setQuality(generalProduct.getQuality() - GeneralProduct.NON_EXPIRED_PRODUCT_QUALITY_REDUCTION);
         }
-    }
-
-    private void updateProductSellIn(GeneralProduct generalProduct) {
-        generalProduct.setSellIn(generalProduct.getSellIn() - 1);
     }
 
     private void updateExpiredProductQuality(GeneralProduct generalProduct) {
