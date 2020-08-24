@@ -32,4 +32,16 @@ public class BackstagePassTest {
 
         assertEquals(expectedQuality, gildedRose.getBackstagePasses().get(0).getQuality());
     }
+
+    @ParameterizedTest
+    @CsvSource({"1,13","2,16","3,19","4,22","5,25"})
+    void should_add_treble_amount_of_days_to_quality_when_pass_several_days_but_sell_in_greater_than_0_and_less_equal_than_5_given_gilded_rose_include_backstage_pass_with_10_quality_and_5_sell_in(int passedDays, int expectedQuality) {
+        List<BackstagePass> backstagePasses = new ArrayList<>();
+        backstagePasses.add(new BackstagePass(5, 10));
+        GildedRose gildedRose = new GildedRose(new ArrayList<>(), backstagePasses);
+
+        gildedRose.afterDays(passedDays);
+
+        assertEquals(expectedQuality, gildedRose.getBackstagePasses().get(0).getQuality());
+    }
 }

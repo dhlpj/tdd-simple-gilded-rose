@@ -4,8 +4,6 @@ import java.util.List;
 
 public class GildedRose {
     public static final int MIN_PRODUCT_QUALITY = 0;
-    public static final int NON_EXPIRED_PRODUCT_QUALITY_REDUCTION = 1;
-    public static final int EXPIRED_PRODUCT_QUALITY_REDUCTION = 2;
     private List<GeneralProduct> generalProducts;
     private List<BackstagePass> backstagePasses;
 
@@ -26,11 +24,12 @@ public class GildedRose {
         }
         for (BackstagePass backstagePass : backstagePasses) {
             for (; days > 0; days = days - 1) {
-                if (backstagePass.getSellIn() <= 10) {
-                    backstagePass.setQuality(backstagePass.getQuality() + 2);
-                }
                 if (backstagePass.getSellIn() > 10) {
                     backstagePass.setQuality(backstagePass.getQuality() + 1);
+                } else if (backstagePass.getSellIn() > 5) {
+                    backstagePass.setQuality(backstagePass.getQuality() + 2);
+                } else {
+                    backstagePass.setQuality(backstagePass.getQuality() + 3);
                 }
                 backstagePass.setSellIn(backstagePass.getSellIn() - 1);
             }
@@ -46,7 +45,7 @@ public class GildedRose {
         if (generalProduct.getSellIn() <= 0) {
             updateExpiredProductQuality(generalProduct);
         } else {
-            generalProduct.setQuality(generalProduct.getQuality() - NON_EXPIRED_PRODUCT_QUALITY_REDUCTION);
+            generalProduct.setQuality(generalProduct.getQuality() - GeneralProduct.NON_EXPIRED_PRODUCT_QUALITY_REDUCTION);
         }
     }
 
@@ -55,8 +54,8 @@ public class GildedRose {
     }
 
     private void updateExpiredProductQuality(GeneralProduct generalProduct) {
-        if (generalProduct.getQuality() > EXPIRED_PRODUCT_QUALITY_REDUCTION) {
-            generalProduct.setQuality(generalProduct.getQuality() - EXPIRED_PRODUCT_QUALITY_REDUCTION);
+        if (generalProduct.getQuality() > GeneralProduct.EXPIRED_PRODUCT_QUALITY_REDUCTION) {
+            generalProduct.setQuality(generalProduct.getQuality() - GeneralProduct.EXPIRED_PRODUCT_QUALITY_REDUCTION);
         } else {
             generalProduct.setQuality(MIN_PRODUCT_QUALITY);
         }

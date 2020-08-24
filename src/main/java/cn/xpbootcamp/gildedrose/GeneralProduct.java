@@ -1,6 +1,9 @@
 package cn.xpbootcamp.gildedrose;
 
 public class GeneralProduct {
+    public static final int NON_EXPIRED_PRODUCT_QUALITY_REDUCTION = 1;
+    public static final int EXPIRED_PRODUCT_QUALITY_REDUCTION = 2;
+
     private int sellIn;
     private int quality;
 
